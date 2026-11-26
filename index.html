@@ -1,1191 +1,546 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SP Mines &amp; Minerals — Mineral Sourcing &amp; Industrial Supply</title>
-  <meta name="description" content="Dependable mineral sourcing, trading and bulk industrial supply. SP Mines & Minerals connects mineral resources with industrial demand." />
-  <meta name="theme-color" content="#171A18" />
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="SP Mines & Minerals — Mineral Sourcing & Industrial Supply" />
-  <meta property="og:description" content="Dependable mineral sourcing, trading and bulk industrial supply." />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1781546441738-b85e43e733e3?auto=format&fit=crop&w=1200&q=85" />
-
-  <!-- Necessary files -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
-  <style>
-/* =====================================================================
-   SP MINES & MINERALS — static site styles
-   Palette: obsidian #171A18 · charcoal #292C28 · slate #343832
-            stone #75634E · copper #B47745 · sandstone #D0C5B2
-            mineral #F2EFE8
-   ===================================================================== */
-
-:root {
-  --obsidian: #171a18;
-  --charcoal: #292c28;
-  --slate: #343832;
-  --stone: #75634e;
-  --copper: #b47745;
-  --copper-dark: #9e6436;
-  --sandstone: #d0c5b2;
-  --mineral: #f2efe8;
-  --white: #ffffff;
-  --maxw: 1280px;
-  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SP Mines &amp; Minerals — Mineral Sourcing, Trading &amp; Industrial Supply</title>
+<meta name="description" content="SP Mines & Minerals — sourcing, trading and bulk supply of industrial minerals and raw materials. Dependable supply for construction, infrastructure and industry."/>
+<meta name="theme-color" content="#14120f"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#14120f; --bg2:#1c1a16; --card:#211e19; --line:rgba(255,255,255,.08);
+  --ink:#f2efe8; --mut:#a79e8f; --copper:#b47745; --copper2:#cf8a4f; --stone:#75634e;
+  --maxw:1240px; --ease:cubic-bezier(.22,1,.36,1);
+  --head:"Jost",system-ui,sans-serif; --body:"Inter",system-ui,sans-serif; --disp:"Space Grotesk",monospace;
 }
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  background-color:var(--bg);
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size:44px 44px;
+  background-position:center top;
+  background-attachment:fixed}
+h1,h2,h3,h4{font-family:var(--head);line-height:1.1;letter-spacing:-.01em}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--copper);color:#fff}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 clamp(18px,4vw,42px)}
+.sec{padding:clamp(56px,8vw,96px) 0}
+.tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--copper)}
+.tag::before{content:"";width:26px;height:2px;background:var(--copper)}
+.h2{font-size:clamp(1.7rem,4.2vw,2.7rem);font-weight:800;margin-top:14px}
+.lead{margin-top:16px;color:var(--mut);font-size:1.02rem;line-height:1.7;max-width:60ch}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 24px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:4px;border:1px solid transparent;cursor:pointer;transition:all .3s var(--ease)}
+.btn svg{width:16px;height:16px}
+.btn-pri{background:var(--copper);color:#fff}.btn-pri:hover{background:var(--copper2)}
+.btn-out{border-color:rgba(255,255,255,.3);color:var(--ink)}.btn-out:hover{background:rgba(255,255,255,.08);border-color:#fff}
+.btn-wa{background:#25d366;color:#fff}.btn-wa:hover{filter:brightness(.93)}
+.btn-dark{background:#14120f;color:var(--ink);border-color:var(--line)}.btn-dark:hover{border-color:var(--copper)}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border:1px solid var(--line);border-radius:999px;background:var(--bg2);font-size:.8rem;font-weight:600;color:var(--ink)}
+.chip b{color:var(--copper);font-family:var(--disp)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.vis{opacity:1;transform:none}
+img.fb{background:linear-gradient(135deg,var(--bg2),var(--stone) 60%,var(--card))!important}
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* topbar */
+.topbar{background:#0f0e0b;border-bottom:1px solid var(--line);font-size:12px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:9px;padding-bottom:9px}
+.topbar .facts{display:flex;gap:20px;color:var(--mut);flex-wrap:wrap}
+.topbar .facts span{display:inline-flex;align-items:center;gap:7px}
+.topbar .facts b{color:var(--ink);font-weight:600}
+.topbar .tacts{display:flex;gap:8px;flex-shrink:0}
+.topbar .tacts a{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:4px;font-weight:600;font-size:11px;letter-spacing:.04em}
+.topbar .tacts a svg{width:14px;height:14px}
+.t-call{border:1px solid var(--line);color:var(--ink)}.t-wa{background:#25d366;color:#fff}
+@media(max-width:860px){.topbar .facts span:nth-child(n+2){display:none}}
 
-html { scroll-behavior: smooth; }
+/* header */
+.hdr{position:sticky;top:0;z-index:50;background:rgba(20,18,15,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
+.brand{display:flex;align-items:center;gap:11px}
+.brand .mk{width:40px;height:40px}
+.brand b{font-family:var(--head);font-size:1.05rem;font-weight:800}
+.brand b span{color:var(--copper)}
+.brand small{display:block;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin-top:3px}
+.menu{display:flex;align-items:center;gap:26px;list-style:none}
+.menu a{font-size:13px;font-weight:600;letter-spacing:.04em;color:var(--mut);transition:color .3s}
+.menu a:hover{color:var(--copper)}
+.hdr-cta{display:flex;align-items:center;gap:10px}
+.burger{display:none;background:none;border:none;color:var(--ink);cursor:pointer;padding:6px}
+.burger svg{width:26px;height:26px}
+.mnav{position:fixed;inset:0;z-index:60;background:var(--bg);transform:translateX(100%);transition:transform .4s var(--ease);display:flex;flex-direction:column;justify-content:center;padding:0 28px}
+.mnav.open{transform:none}
+.mnav a{padding:14px 0;border-bottom:1px solid var(--line);font-family:var(--head);font-size:1.3rem;font-weight:700}
+.mnav .btn{margin-top:22px}
+.mnav .x{position:absolute;top:20px;right:20px;background:none;border:none;color:var(--ink);cursor:pointer}
+.mnav .x svg{width:28px;height:28px}
 
-body {
-  font-family: "Inter", system-ui, sans-serif;
-  color: var(--obsidian);
-  background: var(--mineral);
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
+/* hero */
+.hero{position:relative;overflow:hidden;min-height:92vh;display:flex;align-items:center}
+.hero .bg{position:absolute;inset:0}
+.hero .bg img,.hero .bg video{width:100%;height:100%;object-fit:cover}
+.hero .ov{position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,14,11,.95) 0%,rgba(15,14,11,.8) 45%,rgba(15,14,11,.45) 100%)}
+.hero .in{position:relative;z-index:2;padding:72px 0}
+.hero .badges{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+.badge{border:1px solid var(--line);border-radius:6px;padding:10px 14px;background:rgba(33,30,25,.6)}
+.badge small{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--copper);font-weight:700}
+.badge b{font-size:.82rem;font-weight:600}
+.hero h1{font-size:clamp(2.1rem,5.4vw,3.8rem);font-weight:800;max-width:18ch}
+.hero h1 span{color:var(--copper)}
+.hero p{margin-top:20px;max-width:52ch;color:var(--mut);font-size:clamp(1rem,2vw,1.15rem);line-height:1.7}
+.hero .acts{margin-top:30px;display:flex;flex-wrap:wrap;gap:14px}
 
-h1, h2, h3, h4 { font-family: "Manrope", system-ui, sans-serif; line-height: 1.08; }
-img { display: block; max-width: 100%; }
-a { color: inherit; text-decoration: none; }
-::selection { background: var(--copper); color: #fff; }
+/* generic grid */
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:1000px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.g2,.g3,.g4{grid-template-columns:1fr}}
 
-.container {
-  width: 100%;
-  max-width: var(--maxw);
-  margin: 0 auto;
-  padding: 0 clamp(20px, 4vw, 48px);
-}
+/* intro split */
+.split{display:grid;gap:clamp(28px,5vw,56px);align-items:center}
+@media(min-width:960px){.split{grid-template-columns:1.1fr .9fr}}
+.media{position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+.media img{width:100%;height:100%;object-fit:cover}
+.media.r43{aspect-ratio:4/3}.media.r11{aspect-ratio:1/1}
 
-.section { padding: clamp(72px, 10vw, 112px) 0; }
+/* stat cards */
+.stat{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:26px}
+.stat .n{font-family:var(--disp);font-size:1.5rem;font-weight:700;color:var(--copper)}
+.stat h4{margin-top:8px;font-size:1rem;font-weight:700}
+.stat p{margin-top:6px;font-size:.84rem;color:var(--mut);line-height:1.5}
 
-/* ---------- labels / eyebrow ---------- */
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--copper);
-}
-.eyebrow::before { content: ""; width: 32px; height: 1px; background: rgba(180,119,69,0.7); }
-.eyebrow.center { justify-content: center; }
+/* image strip */
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:620px){.strip{grid-template-columns:1fr}}
+.strip .s{aspect-ratio:4/3;border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+.strip .s img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+.strip .s:hover img{transform:scale(1.07)}
 
-.sec-head { max-width: 640px; }
-.sec-head.center { margin: 0 auto; text-align: center; }
-.sec-head h2 {
-  margin-top: 20px;
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-}
-.sec-head p { margin-top: 18px; font-size: 1rem; line-height: 1.7; color: rgba(52,56,50,0.8); }
-.sec-head.light h2 { color: var(--mineral); }
-.sec-head.light p { color: rgba(242,239,232,0.65); }
+/* product card */
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .4s,transform .4s}
+.pcard:hover{border-color:var(--copper);transform:translateY(-4px)}
+.pcard .th{aspect-ratio:16/10;overflow:hidden;position:relative}
+.pcard .th img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+.pcard:hover .th img{transform:scale(1.08)}
+.pcard .th .tg{position:absolute;top:12px;left:12px;background:rgba(15,14,11,.85);border:1px solid var(--line);color:var(--copper);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:4px}
+.pcard .bd{padding:22px;display:flex;flex-direction:column;flex:1}
+.pcard h3{font-size:1.2rem;font-weight:700}
+.pcard ul{margin:12px 0 0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:7px;flex:1}
+.pcard li{font-size:.86rem;color:var(--mut);display:flex;gap:9px;line-height:1.4}
+.pcard li::before{content:"";width:6px;height:6px;margin-top:6px;background:var(--copper);flex-shrink:0;transform:rotate(45deg)}
+.pcard .btn{margin-top:18px}
 
-/* ---------- buttons ---------- */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 14px 28px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  border-radius: 2px;
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: all 0.3s var(--ease);
-}
-.btn svg { width: 16px; height: 16px; }
-.btn-primary { background: var(--copper); color: #fff; }
-.btn-primary:hover { background: var(--copper-dark); box-shadow: 0 14px 30px -12px rgba(180,119,69,0.7); }
-.btn-outline-light { border-color: rgba(255,255,255,0.4); color: #fff; }
-.btn-outline-light:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
-.btn-outline-dark { border-color: rgba(23,26,24,0.25); color: var(--obsidian); }
-.btn-outline-dark:hover { background: var(--obsidian); color: var(--mineral); }
-.btn-ghost { border-color: rgba(180,119,69,0.5); color: var(--copper); }
-.btn-ghost:hover { background: var(--copper); color: #fff; }
+/* op cards */
+.op{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:24px}
+.op .ic{width:48px;height:48px;border-radius:6px;background:rgba(180,119,69,.14);color:var(--copper);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.op .ic svg{width:22px;height:22px}
+.op h3{font-size:1.1rem;font-weight:700}
+.op p{margin-top:8px;font-size:.86rem;color:var(--mut);line-height:1.6}
 
-/* ---------- header / nav ---------- */
-.header {
-  position: fixed;
-  inset: 0 0 auto 0;
-  z-index: 50;
-  padding: 22px 0;
-  transition: all 0.45s var(--ease);
-  background: linear-gradient(to bottom, rgba(23,26,24,0.7), transparent);
-}
-.header.scrolled {
-  padding: 12px 0;
-  background: rgba(23,26,24,0.96);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 8px 30px -18px rgba(0,0,0,0.9);
-}
-.nav { display: flex; align-items: center; justify-content: space-between; }
+/* why */
+.why{background:linear-gradient(180deg,var(--bg2),var(--bg));border:1px solid var(--line);border-radius:8px;padding:26px}
+.why .n{font-family:var(--disp);font-size:1.3rem;color:rgba(180,119,69,.5);font-weight:700}
+.why h3{margin-top:10px;font-size:1.08rem;font-weight:700}
+.why p{margin-top:8px;font-size:.86rem;color:var(--mut);line-height:1.6}
 
-.brand { display: flex; align-items: center; gap: 12px; }
-.brand .mark { width: 40px; height: 40px; flex-shrink: 0; }
-.brand .word { display: flex; flex-direction: column; line-height: 1; }
-.brand .word b { font-family: "Manrope"; font-size: 1.05rem; font-weight: 800; color: #fff; letter-spacing: -0.01em; }
-.brand .word b span { font-weight: 600; margin-left: 4px; }
-.brand .word small { margin-top: 5px; font-size: 9px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+/* industries numbered */
+.ind{display:flex;gap:20px;padding:24px 0;border-bottom:1px solid var(--line)}
+.ind .no{font-family:var(--disp);font-size:1.6rem;font-weight:700;color:var(--copper);min-width:52px}
+.ind h3{font-size:1.15rem;font-weight:700}
+.ind p{margin-top:6px;font-size:.9rem;color:var(--mut);line-height:1.6;max-width:70ch}
 
-.nav-links { display: flex; align-items: center; gap: 30px; list-style: none; }
-.nav-links a {
-  position: relative;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(242,239,232,0.85);
-  transition: color 0.3s;
-}
-.nav-links a:hover, .nav-links a.active { color: var(--copper); }
+/* gallery snapshot */
+.snap{position:relative;aspect-ratio:4/3;border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+.snap img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+.snap:hover img{transform:scale(1.07)}
+.snap .lb{position:absolute;inset:auto 0 0 0;padding:16px;background:linear-gradient(to top,rgba(15,14,11,.92),transparent);font-weight:700;font-size:.95rem}
 
-.nav-cta { display: inline-flex; }
+/* highlights */
+.hl{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:24px;text-align:left}
+.hl .av{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;margin-bottom:14px}
+.hl .av svg{width:22px;height:22px}
+.hl h4{font-size:1.02rem;font-weight:700}.hl p{margin-top:7px;font-size:.84rem;color:var(--mut);line-height:1.55}
 
-.burger { display: none; background: none; border: none; color: var(--mineral); cursor: pointer; padding: 6px; }
-.burger svg { width: 26px; height: 26px; }
+/* quote / contact band */
+.band{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:clamp(28px,4vw,48px)}
+.form-grid{display:grid;gap:16px;grid-template-columns:1fr 1fr}
+@media(max-width:620px){.form-grid{grid-template-columns:1fr}}
+.fld{display:flex;flex-direction:column;gap:6px}.fld.full{grid-column:1/-1}
+.fld label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.fld label .r{color:var(--copper)}
+.fld input,.fld select,.fld textarea{background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:12px 14px;color:var(--ink);font-family:inherit;font-size:.9rem;outline:none;transition:border-color .3s}
+.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--copper)}
+.fld .er{font-size:12px;color:#e07a6a}.fld .bad{border-color:#e07a6a}
+.okbox{text-align:center;padding:24px}
+.okbox svg{width:46px;height:46px;color:var(--copper);margin:0 auto}
+.okbox h3{margin-top:14px;font-size:1.3rem;font-weight:700}
+.okbox p{margin-top:10px;color:var(--mut);font-size:.9rem}
+.hidden{display:none!important}
 
-/* mobile menu */
-.mobile-menu {
-  position: fixed;
-  inset: 0;
-  z-index: 49;
-  background: var(--obsidian);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0 clamp(20px,6vw,48px);
-  transform: translateX(100%);
-  transition: transform 0.4s var(--ease);
-}
-.mobile-menu.open { transform: translateX(0); }
-.mobile-menu a {
-  padding: 16px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  font-family: "Manrope";
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--mineral);
-}
-.mobile-menu a.active { color: var(--copper); }
-.mobile-menu .btn { margin-top: 28px; }
+/* contact info */
+.cinfo{display:flex;flex-direction:column;gap:14px}
+.crow{display:flex;gap:14px;align-items:flex-start;padding:16px;border:1px solid var(--line);border-radius:8px;background:var(--card)}
+.crow .ic{width:40px;height:40px;border-radius:6px;background:rgba(180,119,69,.14);color:var(--copper);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.crow .ic svg{width:19px;height:19px}
+.crow small{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);font-weight:700}
+.crow p{margin-top:3px;font-size:.92rem;font-weight:500}
+.mapph{aspect-ratio:16/7;border-radius:8px;border:1px solid var(--line);background:var(--card);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--mut);gap:10px;margin-top:16px}
+.mapph svg{width:28px;height:28px;color:var(--copper)}
 
-/* ---------- hero ---------- */
-.hero {
-  position: relative;
-  min-height: 100svh;
-  display: flex;
-  align-items: flex-end;
-  overflow: hidden;
-}
-.hero .bg { position: absolute; inset: 0; }
-.hero .bg img { width: 100%; height: 100%; object-fit: cover; animation: heroZoom 1.6s var(--ease) both; }
-@keyframes heroZoom { from { transform: scale(1.12); } to { transform: scale(1); } }
-.hero .overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, var(--obsidian), rgba(23,26,24,0.55) 45%, rgba(23,26,24,0.3));
-}
-.hero .inner { position: relative; z-index: 2; padding: 160px 0 112px; }
-.hero .eyebrow { color: var(--copper); }
-.hero h1 {
-  margin-top: 24px;
-  max-width: 14ch;
-  color: var(--mineral);
-  font-size: clamp(2.6rem, 7vw, 4.6rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-}
-.hero h1 .accent { color: var(--copper); }
-.hero p { margin-top: 24px; max-width: 42ch; color: rgba(242,239,232,0.75); font-size: clamp(1rem,2vw,1.15rem); line-height: 1.7; }
-.hero .actions { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 16px; }
+/* faq */
+.faq{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.faq .q{width:100%;text-align:left;background:none;border:none;color:var(--ink);padding:18px 20px;font-size:1rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;border-bottom:1px solid var(--line);font-family:var(--head)}
+.faq .q:last-child{border-bottom:none}
+.faq .q .pm{color:var(--copper);font-size:1.4rem;line-height:1;transition:transform .3s}
+.faq .q.on .pm{transform:rotate(45deg)}
+.faq .a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease);border-bottom:1px solid var(--line)}
+.faq .a div{padding:0 20px 18px;color:var(--mut);font-size:.92rem;line-height:1.7}
 
-.scroll-ind {
-  position: absolute; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 2;
-  width: 24px; height: 40px; border: 1px solid rgba(242,239,232,0.4); border-radius: 999px;
-  display: flex; justify-content: center; padding-top: 7px;
-}
-.scroll-ind span { width: 4px; height: 8px; background: var(--copper); border-radius: 999px; animation: scrollDot 1.8s ease-in-out infinite; }
-@keyframes scrollDot { 0% { transform: translateY(0); opacity: 0; } 40% { opacity: 1; } 100% { transform: translateY(16px); opacity: 0; } }
+/* closing cta */
+.cta{position:relative;overflow:hidden;border-radius:10px}
+.cta img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cta .ov{position:absolute;inset:0;background:rgba(15,14,11,.86)}
+.cta .in{position:relative;z-index:2;padding:clamp(40px,6vw,72px);text-align:center}
+.cta h2{font-size:clamp(1.6rem,4vw,2.6rem);font-weight:800;max-width:24ch;margin:14px auto 0}
+.cta .acts{margin-top:26px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 
-/* page hero (smaller) for inner anchor sections not used here; kept for reuse */
+/* footer */
+.ft{background:#0f0e0b;border-top:1px solid var(--line);padding-top:56px}
+.ft .top{display:grid;gap:34px}
+@media(min-width:800px){.ft .top{grid-template-columns:2fr 1fr 1fr 1.4fr}}
+.ft .desc{margin-top:16px;color:var(--mut);font-size:.88rem;line-height:1.7;max-width:34ch}
+.ft .fstats{display:flex;gap:22px;margin-top:18px;flex-wrap:wrap}
+.ft .fstats div small{display:block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+.ft .fstats div b{font-family:var(--head);font-size:1.05rem;color:var(--copper)}
+.ft h5{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--copper);font-weight:700}
+.ft ul{list-style:none;margin-top:16px;display:flex;flex-direction:column;gap:10px}
+.ft a{color:var(--mut);font-size:.9rem;transition:color .3s}.ft a:hover{color:var(--ink)}
+.ft .bot{margin-top:40px;border-top:1px solid var(--line);padding:20px 0;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;color:var(--mut);font-size:12px}
+.ft .bot nav{display:flex;gap:16px;flex-wrap:wrap}
 
-/* ---------- intro / about ---------- */
-.bg-mineral { background: var(--mineral); }
-.bg-sand { background: rgba(208,197,178,0.4); }
-.bg-dark { background: var(--obsidian); color: var(--mineral); }
-.bg-charcoal { background: var(--charcoal); color: var(--mineral); }
+.tt{position:fixed;bottom:20px;right:20px;z-index:40;width:46px;height:46px;border-radius:50%;background:var(--copper);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.tt.on{opacity:1;pointer-events:auto}.tt svg{width:20px;height:20px}
 
-.split { display: grid; gap: clamp(32px, 5vw, 64px); align-items: center; }
-@media (min-width: 1024px) { .split { grid-template-columns: 1fr 1fr; } }
-.media { position: relative; border-radius: 2px; overflow: hidden; }
-.media.ratio-45 { aspect-ratio: 4/5; }
-.media.ratio-43 { aspect-ratio: 4/3; }
-.media img { width: 100%; height: 100%; object-fit: cover; }
-.media-frame::after {
-  content: ""; position: absolute; right: -24px; bottom: -24px; width: 160px; height: 160px;
-  border-right: 2px solid var(--copper); border-bottom: 2px solid var(--copper);
-}
-@media (max-width: 1024px){ .media-frame::after { display: none; } }
-
-.chips { margin-top: 32px; display: grid; gap: 12px 32px; grid-template-columns: 1fr 1fr; list-style: none; }
-.chips li { display: flex; align-items: center; gap: 12px; font-size: 0.9rem; font-weight: 500; color: var(--slate); }
-.chips li::before { content: ""; width: 6px; height: 6px; border-radius: 999px; background: var(--copper); flex-shrink: 0; }
-
-.prose p { font-size: 1rem; line-height: 1.75; color: rgba(52,56,50,0.85); }
-.prose p + p { margin-top: 20px; }
-
-/* ---------- mineral grid ---------- */
-.grid { display: grid; gap: 24px; }
-.grid.cols-4 { grid-template-columns: repeat(4,1fr); }
-.grid.cols-3 { grid-template-columns: repeat(3,1fr); }
-.grid.cols-2 { grid-template-columns: repeat(2,1fr); }
-@media (max-width: 1024px){ .grid.cols-4, .grid.cols-3 { grid-template-columns: repeat(2,1fr); } }
-@media (max-width: 560px){ .grid.cols-4, .grid.cols-3, .grid.cols-2 { grid-template-columns: 1fr; } }
-
-.card {
-  display: flex; flex-direction: column; overflow: hidden;
-  background: #fff; border: 1px solid rgba(23,26,24,0.1); border-radius: 2px;
-  box-shadow: 0 18px 50px -24px rgba(23,26,24,0.55);
-  transition: border-color 0.4s;
-}
-.card:hover { border-color: rgba(180,119,69,0.4); }
-.card .thumb { position: relative; aspect-ratio: 4/3; overflow: hidden; }
-.card .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.9s var(--ease); }
-.card:hover .thumb img { transform: scale(1.1); }
-.card .tag {
-  position: absolute; top: 14px; left: 14px; padding: 5px 12px; border-radius: 2px;
-  background: rgba(23,26,24,0.8); color: var(--mineral); backdrop-filter: blur(4px);
-  font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
-}
-.card .body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
-.card .body h3 { font-size: 1.2rem; font-weight: 700; }
-.card .body p { margin-top: 8px; flex: 1; font-size: 0.875rem; line-height: 1.6; color: rgba(52,56,50,0.75); }
-.card .foot {
-  margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(23,26,24,0.1);
-  display: flex; align-items: center; gap: 12px;
-}
-.card .foot a { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 6px; transition: color 0.3s; }
-.card .foot .enquire { margin-left: auto; color: var(--copper); }
-.card .foot a:hover { color: var(--copper); }
-
-/* ---------- why (strengths) ---------- */
-.strata-bg { position: relative; overflow: hidden; }
-.strata-bg::before {
-  content: ""; position: absolute; inset: 0; opacity: 0.12;
-  background:
-    repeating-linear-gradient(115deg, transparent 0 60px, rgba(180,119,69,0.4) 60px 61px),
-    radial-gradient(circle at 70% 30%, rgba(117,99,78,0.5), transparent 60%);
-}
-.strengths { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; border: 1px solid rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; background: rgba(255,255,255,0.1); }
-@media (max-width: 1024px){ .strengths { grid-template-columns: repeat(2,1fr); } }
-@media (max-width: 560px){ .strengths { grid-template-columns: 1fr; } }
-.strength { background: var(--obsidian); padding: 32px; transition: background 0.4s; }
-.strength:hover { background: var(--charcoal); }
-.strength .top { display: flex; align-items: center; justify-content: space-between; }
-.strength .top svg { width: 28px; height: 28px; color: var(--copper); }
-.strength .num { font-family: "Space Grotesk"; font-size: 1.9rem; font-weight: 700; color: rgba(255,255,255,0.15); }
-.strength h3 { margin-top: 24px; font-size: 1.05rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
-.strength p { margin-top: 12px; font-size: 0.875rem; line-height: 1.6; color: rgba(242,239,232,0.6); }
-
-/* ---------- industries ---------- */
-.ind { position: relative; aspect-ratio: 4/5; overflow: hidden; border-radius: 2px; }
-.ind img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.9s var(--ease); }
-.ind:hover img { transform: scale(1.1); }
-.ind .cap { position: absolute; inset: auto 0 0 0; padding: 24px; background: linear-gradient(to top, var(--obsidian), rgba(23,26,24,0.35), transparent); }
-.ind .cap h3 { color: var(--mineral); font-size: 1.1rem; font-weight: 700; }
-.ind .cap p { max-height: 0; opacity: 0; overflow: hidden; margin-top: 4px; color: rgba(242,239,232,0.7); font-size: 0.875rem; line-height: 1.5; transition: all 0.5s var(--ease); }
-.ind:hover .cap p { max-height: 80px; opacity: 1; }
-.ind .cap .line { display: block; margin-top: 12px; width: 40px; height: 2px; background: var(--copper); }
-
-/* ---------- sourcing split band ---------- */
-.band { position: relative; display: grid; }
-@media (min-width: 1024px){ .band { grid-template-columns: 1fr 1fr; } }
-.band .bandimg { position: relative; min-height: 320px; }
-.band .bandimg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.band .bandimg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to right, rgba(41,44,40,0.4), var(--charcoal)); }
-.band .bandbody { padding: clamp(48px,8vw,112px) clamp(24px,5vw,64px); }
-.steps { margin-top: 40px; display: flex; flex-direction: column; gap: 24px; }
-.step { display: flex; gap: 20px; }
-.step .ic { flex-shrink: 0; width: 48px; height: 48px; border: 1px solid rgba(180,119,69,0.4); border-radius: 2px; display: flex; align-items: center; justify-content: center; color: var(--copper); }
-.step .ic svg { width: 20px; height: 20px; }
-.step .no { font-family: "Space Grotesk"; font-size: 12px; font-weight: 700; color: var(--copper); }
-.step h3 { margin-top: 2px; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
-.step p { margin-top: 4px; font-size: 0.875rem; line-height: 1.6; color: rgba(242,239,232,0.6); }
-
-/* ---------- gallery (grid of fixed-ratio tiles) ---------- */
-.masonry { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-@media (max-width: 900px){ .masonry { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 440px){ .masonry { grid-template-columns: 1fr; } }
-.masonry .g {
-  position: relative; border-radius: 2px; overflow: hidden; cursor: pointer;
-  width: 100%; border: none; padding: 0; background: var(--charcoal); aspect-ratio: 4 / 3;
-}
-.masonry .g img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.9s var(--ease); }
-.masonry .g:hover img { transform: scale(1.08); }
-.masonry .g::after { content: ""; position: absolute; inset: 0; background: rgba(23,26,24,0); transition: background 0.5s; }
-.masonry .g:hover::after { background: rgba(23,26,24,0.25); }
-
-.lightbox { position: fixed; inset: 0; z-index: 70; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(23,26,24,0.95); }
-.lightbox.open { display: flex; }
-.lightbox img { max-width: min(960px,92vw); max-height: 82vh; object-fit: contain; border-radius: 2px; }
-.lightbox .lb-btn { position: absolute; background: none; border: 1px solid rgba(255,255,255,0.2); color: var(--mineral); border-radius: 999px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s; }
-.lightbox .lb-btn:hover { border-color: var(--copper); color: var(--copper); }
-.lb-close { top: 20px; right: 20px; }
-.lb-prev { left: 16px; top: 50%; transform: translateY(-50%); }
-.lb-next { right: 16px; top: 50%; transform: translateY(-50%); }
-.lightbox svg { width: 22px; height: 22px; }
-
-/* ---------- CTA band ---------- */
-.cta { position: relative; overflow: hidden; }
-.cta .bg { position: absolute; inset: 0; }
-.cta .bg img { width: 100%; height: 100%; object-fit: cover; }
-.cta .overlay { position: absolute; inset: 0; background: rgba(23,26,24,0.85); }
-.cta .inner { position: relative; z-index: 2; padding: clamp(80px,10vw,112px) 0; display: flex; flex-direction: column; gap: 32px; align-items: flex-start; }
-@media (min-width: 1024px){ .cta .inner { flex-direction: row; align-items: center; justify-content: space-between; } }
-.cta h2 { margin-top: 20px; color: var(--mineral); font-size: clamp(1.8rem,4vw,3rem); font-weight: 800; letter-spacing: -0.02em; }
-.cta p { margin-top: 20px; max-width: 40ch; color: rgba(242,239,232,0.7); line-height: 1.7; }
-
-/* ---------- contact ---------- */
-.contact-grid { display: grid; gap: clamp(32px,5vw,64px); }
-@media (min-width: 1024px){ .contact-grid { grid-template-columns: 5fr 7fr; } }
-.info-row { display: flex; gap: 16px; align-items: flex-start; padding: 16px; border: 1px solid rgba(23,26,24,0.1); border-radius: 2px; background: #fff; transition: border-color 0.3s; }
-.info-row:hover { border-color: rgba(180,119,69,0.4); }
-.info-row .ic { flex-shrink: 0; width: 40px; height: 40px; border-radius: 2px; background: var(--obsidian); color: var(--copper); display: flex; align-items: center; justify-content: center; }
-.info-row .ic svg { width: 20px; height: 20px; }
-.info-row small { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone); }
-.info-row p { margin-top: 4px; font-size: 0.9rem; font-weight: 500; color: var(--obsidian); }
-.info-list { display: flex; flex-direction: column; gap: 14px; margin-top: 28px; }
-
-.form-wrap { background: #fff; border: 1px solid rgba(23,26,24,0.1); border-radius: 2px; box-shadow: 0 18px 50px -24px rgba(23,26,24,0.55); padding: clamp(24px,4vw,40px); }
-.form-grid { display: grid; gap: 20px; grid-template-columns: 1fr 1fr; }
-@media (max-width: 560px){ .form-grid { grid-template-columns: 1fr; } }
-.field { display: flex; flex-direction: column; gap: 6px; }
-.field.full { grid-column: 1 / -1; }
-.field label { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--slate); }
-.field label .req { color: var(--copper); }
-.field input, .field select, .field textarea {
-  border: 1px solid rgba(23,26,24,0.15); border-radius: 2px; padding: 12px 16px;
-  font-family: inherit; font-size: 0.9rem; color: var(--obsidian); background: #fff; outline: none; transition: border-color 0.3s;
-}
-.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--copper); }
-.field .err { font-size: 12px; color: #c0392b; }
-.field input.invalid, .field textarea.invalid { border-color: #e06666; }
-.form-note { margin-bottom: 20px; border: 1px solid rgba(180,119,69,0.25); background: rgba(180,119,69,0.06); border-radius: 2px; padding: 12px 16px; font-size: 12px; line-height: 1.6; color: var(--stone); }
-.form-success { text-align: center; padding: 24px 8px; }
-.form-success svg { width: 48px; height: 48px; color: var(--copper); margin: 0 auto; }
-.form-success h3 { margin-top: 16px; font-size: 1.4rem; font-weight: 700; }
-.form-success p { margin: 12px auto 0; max-width: 46ch; font-size: 0.9rem; line-height: 1.6; color: rgba(52,56,50,0.75); }
-.hidden { display: none !important; }
-
-/* ---------- footer ---------- */
-.footer { background: var(--obsidian); color: var(--mineral); }
-.footer .top { display: grid; gap: 40px; padding: clamp(56px,7vw,80px) 0; }
-@media (min-width: 768px){ .footer .top { grid-template-columns: 2fr 1fr 1.5fr 1.5fr; } }
-.footer h4 { font-size: 11px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--copper); }
-.footer ul { list-style: none; margin-top: 20px; display: flex; flex-direction: column; gap: 12px; }
-.footer .cols2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; }
-.footer a { font-size: 0.9rem; color: rgba(242,239,232,0.7); transition: color 0.3s; }
-.footer a:hover { color: #fff; }
-.footer .desc { margin-top: 20px; max-width: 36ch; font-size: 0.875rem; line-height: 1.7; color: rgba(242,239,232,0.6); }
-.footer .bottom { border-top: 1px solid rgba(255,255,255,0.1); padding: 24px 0; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; }
-.footer .bottom small { font-size: 12px; color: rgba(242,239,232,0.45); }
-.to-top { background: none; border: none; color: rgba(242,239,232,0.6); cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; transition: color 0.3s; }
-.to-top:hover { color: var(--copper); }
-.to-top .circ { width: 28px; height: 28px; border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; transition: border-color 0.3s; }
-.to-top:hover .circ { border-color: var(--copper); }
-.to-top svg { width: 14px; height: 14px; }
-
-.note { font-size: 13px; line-height: 1.6; color: var(--stone); }
-.note.center { text-align: center; max-width: 60ch; margin: 0 auto; }
-
-/* ---------- reveal animation ---------- */
-.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
-.reveal.visible { opacity: 1; transform: none; }
-
-/* broken image fallback */
-img.img-fallback {
-  background:
-    linear-gradient(135deg, var(--charcoal), var(--stone) 55%, var(--slate)) !important;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
-  .reveal { opacity: 1; transform: none; }
-}
-
-/* small screens: hide desktop nav */
-@media (max-width: 1024px) {
-  .nav-links, .nav-cta { display: none; }
-  .burger { display: inline-flex; }
-}
-
-/* anchor targets sit below the fixed header */
-section[id] { scroll-margin-top: 84px; }
-
-/* mobile refinements */
-@media (max-width: 640px) {
-  .container { padding-left: 24px; padding-right: 24px; }
-  .hero .inner { padding: 124px 28px 88px; }
-  .hero h1 { font-size: clamp(2rem, 8vw, 2.8rem); line-height: 1.14; }
-  .hero .actions { gap: 12px; }
-  .hero p { margin-top: 18px; }
-  .sec-head h2 { font-size: clamp(1.55rem, 7vw, 2rem); }
-  .chips { grid-template-columns: 1fr; }
-  .cta .inner { gap: 24px; }
-  .band .bandbody { padding: 56px 24px; }
-}
-@media (max-width: 380px) {
-  .container { padding-left: 20px; padding-right: 20px; }
-  .hero .actions .btn { width: 100%; }
-}
-@media (max-width: 420px) {
-  .brand { gap: 9px; }
-  .brand .mark { width: 34px; height: 34px; }
-  .brand .word b { font-size: 0.92rem; }
-  .brand .word small { display: none; }
-  .btn { padding: 12px 20px; }
-}
-
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition-duration:.001ms!important}.reveal{opacity:1;transform:none}}
+@media(max-width:1000px){.menu,.hdr-cta .btn{display:none}.burger{display:inline-flex}}
+@media(max-width:620px){.hero .ov{background:linear-gradient(180deg,rgba(15,14,11,.7),rgba(15,14,11,.95))}}
 </style>
-  </head>
+</head>
 <body>
 
-  <!-- ===================== HEADER ===================== -->
-  <header class="header">
-    <div class="container nav">
-      <a href="#home" class="brand" aria-label="SP Mines & Minerals — home">
-        <svg class="mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-          <path d="M6 30 L24 6 L42 30" stroke="#B47745" stroke-width="3" stroke-linejoin="round" />
-          <path d="M11 34 L24 17 L37 34" stroke="#F2EFE8" stroke-width="2.4" stroke-linejoin="round" />
-          <path d="M16 38 L24 28 L32 38" stroke="#F2EFE8" stroke-width="2.4" stroke-linejoin="round" opacity="0.7" />
-        </svg>
-        <span class="word">
-          <b>SP<span>Mines &amp; Minerals</span></b>
-          <small>Mineral Resources · Supply</small>
-        </span>
-      </a>
-
-      <ul class="nav-links">
-        <li><a data-nav href="#home">Home</a></li>
-        <li><a data-nav href="#about">About</a></li>
-        <li><a data-nav href="#minerals">Minerals</a></li>
-        <li><a data-nav href="#sourcing">Sourcing</a></li>
-        <li><a data-nav href="#industries">Operations</a></li>
-        <li><a data-nav href="#gallery">Gallery</a></li>
-        <li><a data-nav href="#contact">Contact</a></li>
-      </ul>
-
-      <a href="#contact" class="btn btn-primary nav-cta">
-        Enquire Now
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg>
-      </a>
-
-      <button class="burger" aria-label="Open menu">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </button>
-    </div>
-  </header>
-
-  <!-- mobile menu -->
-  <nav class="mobile-menu" aria-label="Mobile">
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#minerals">Minerals</a>
-    <a href="#sourcing">Sourcing</a>
-    <a href="#industries">Operations</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#contact">Contact</a>
-    <a href="#contact" class="btn btn-primary">Enquire Now</a>
-  </nav>
-
-  <!-- ===================== HERO ===================== -->
-  <section class="hero" id="home">
-    <div class="bg">
-      <img src="https://images.unsplash.com/photo-1781546441738-b85e43e733e3?auto=format&fit=crop&w=2400&q=85" alt="Aerial view of an open-pit mine" />
-    </div>
-    <div class="overlay"></div>
-    <div class="container inner">
-      <span class="eyebrow">Mineral Resources · Industrial Supply</span>
-      <h1>Powering industry through earth&apos;s <span class="accent">resources.</span></h1>
-      <p>Connecting mineral resources with industrial demand through dependable sourcing, quality-focused supply and business relationships.</p>
-      <div class="actions">
-        <a href="#minerals" class="btn btn-primary">
-          Explore Our Minerals
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-        <a href="#contact" class="btn btn-outline-light">Contact Our Team</a>
-      </div>
-    </div>
-    <div class="scroll-ind"><span></span></div>
-  </section>
-
-  <!-- ===================== ABOUT / INTRO ===================== -->
-  <section class="section bg-mineral" id="about">
-    <div class="container split">
-      <div class="reveal">
-        <div class="media ratio-45 media-frame">
-          <img src="https://images.pexels.com/photos/34718926/pexels-photo-34718926/free-photo-of-industrial-factory-interior-with-conveyor-belt.jpeg?auto=compress&dpr=1&h=900&w=720" alt="Industrial conveyor and processing interior" />
-        </div>
-      </div>
-      <div class="reveal">
-        <div class="sec-head">
-          <span class="eyebrow">Who We Are</span>
-          <h2>Grounded in resources.<br />Driven by reliability.</h2>
-          <p>SP Mines &amp; Minerals is a mineral-focused business engaged in mineral resources, sourcing, trading and supply — working to connect dependable material with industrial demand.</p>
-        </div>
-        <ul class="chips">
-          <li>Business relationships</li>
-          <li>Mineral sourcing</li>
-          <li>Supply capability</li>
-          <li>Industrial demand</li>
-          <li>Professional service</li>
-        </ul>
-        <a href="#sourcing" class="btn btn-outline-dark" style="margin-top:36px">
-          Discover Our Company
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== MINERALS ===================== -->
-  <section class="section bg-sand" id="minerals">
-    <div class="container">
-      <div class="sec-head reveal">
-        <span class="eyebrow">Our Materials</span>
-        <h2>Minerals that move industries.</h2>
-        <p>A sample portfolio shown for layout. Categories are illustrative and editable until our inventory is confirmed — not a confirmed list of products.</p>
-      </div>
-
-      <div class="grid cols-4" style="margin-top:56px">
-        <!-- card -->
-        <article class="card reveal">
-          <div class="thumb">
-            <img src="https://images.pexels.com/photos/26621674/pexels-photo-26621674.jpeg?cs=srgb&fm=jpg&w=800" alt="Iron ore" />
-            <span class="tag">Steel &amp; Metallurgy</span>
-          </div>
-          <div class="body">
-            <h3>Iron Ore</h3>
-            <p>Primary raw material for iron and steel making.</p>
-            <div class="foot">
-              <a href="#contact">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-              <a class="enquire" href="#contact" data-mineral="Iron Ore">Enquire</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card reveal">
-          <div class="thumb">
-            <img src="https://images.pexels.com/photos/6788525/pexels-photo-6788525.jpeg?cs=srgb&fm=jpg&w=800" alt="Manganese ore" />
-            <span class="tag">Ferroalloys &amp; Steel</span>
-          </div>
-          <div class="body">
-            <h3>Manganese Ore</h3>
-            <p>Key alloying input for steel and ferroalloys.</p>
-            <div class="foot">
-              <a href="#contact">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-              <a class="enquire" href="#contact" data-mineral="Manganese Ore">Enquire</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card reveal">
-          <div class="thumb">
-            <img src="https://images.pexels.com/photos/35451967/pexels-photo-35451967/free-photo-of-close-up-of-clear-quartz-crystal-on-dark-surface.jpeg?auto=compress&dpr=1&h=600&w=800" alt="Quartz crystal" />
-            <span class="tag">Glass &amp; Ceramics</span>
-          </div>
-          <div class="body">
-            <h3>Quartz</h3>
-            <p>High-silica mineral for glass, ceramics and more.</p>
-            <div class="foot">
-              <a href="#contact">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-              <a class="enquire" href="#contact" data-mineral="Quartz">Enquire</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card reveal">
-          <div class="thumb">
-            <img src="https://images.pexels.com/photos/12275700/pexels-photo-12275700.jpeg?auto=compress&dpr=1&h=600&w=800" alt="Feldspar rock" />
-            <span class="tag">Ceramics &amp; Glass</span>
-          </div>
-          <div class="body">
-            <h3>Feldspar</h3>
-            <p>Fluxing mineral for ceramics and glass.</p>
-            <div class="foot">
-              <a href="#contact">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-              <a class="enquire" href="#contact" data-mineral="Feldspar">Enquire</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card reveal">
-          <div class="thumb">
-            <img src="https://images.pexels.com/photos/2363577/pexels-photo-2363577.jpeg?auto=compress&dpr=1&h=600&w=800" alt="Dolomite rock" />
-            <span class="tag">Steel &amp; Construction</span>
-          </div>
-          <div class="body">
-            <h3>Dolomite</h3>
-            <p>Carbonate mineral for steel, construction and more.</p>
-            <div class="foot">
-              <a href="#contact">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-              <a class="enquire" href="#contact" data-mineral="Dolomite">Enquire</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card reveal">
-          <div class="thumb">
-            <img src="https://images.pexels.com/photos/26621674/pexels-photo-26621674.jpeg?cs=srgb&fm=jpg&w=800&dpr=2" alt="Limestone rock" />
-            <span class="tag">Cement &amp; Construction</span>
-          </div>
-          <div class="body">
-            <h3>Limestone</h3>
-            <p>Versatile raw material for cement and industry.</p>
-            <div class="foot">
-              <a href="#contact">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-              <a class="enquire" href="#contact" data-mineral="Limestone">Enquire</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card reveal">
-          <div class="thumb">
-            <img src="https://images.pexels.com/photos/35497314/pexels-photo-35497314/free-photo-of-close-up-of-clear-quartz-crystal-formation.jpeg?auto=compress&dpr=1&h=600&w=800" alt="Silica" />
-            <span class="tag">Glass &amp; Foundry</span>
-          </div>
-          <div class="body">
-            <h3>Silica</h3>
-            <p>Industrial sand for glass, foundry and construction.</p>
-            <div class="foot">
-              <a href="#contact">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-              <a class="enquire" href="#contact" data-mineral="Silica">Enquire</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card reveal">
-          <div class="thumb">
-            <img src="https://images.pexels.com/photos/6788525/pexels-photo-6788525.jpeg?cs=srgb&fm=jpg&w=800&dpr=2" alt="Coal" />
-            <span class="tag">Energy &amp; Industry</span>
-          </div>
-          <div class="body">
-            <h3>Coal</h3>
-            <p>Industrial fuel and process input.</p>
-            <div class="foot">
-              <a href="#contact">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-              <a class="enquire" href="#contact" data-mineral="Coal">Enquire</a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== WHY (dark) ===================== -->
-  <section class="section bg-dark strata-bg">
-    <div class="container" style="position:relative">
-      <div class="sec-head light reveal">
-        <span class="eyebrow">Why SP Mines &amp; Minerals</span>
-        <h2>Built on trust.<br />Driven by material.</h2>
-      </div>
-      <div class="strengths reveal" style="margin-top:56px">
-        <div class="strength">
-          <div class="top">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-            <span class="num">01</span>
-          </div>
-          <h3>Sourcing</h3>
-          <p>Connecting mineral requirements with appropriate sourcing opportunities.</p>
-        </div>
-        <div class="strength">
-          <div class="top">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            <span class="num">02</span>
-          </div>
-          <h3>Reliability</h3>
-          <p>Business-focused supply coordination and professional communication.</p>
-        </div>
-        <div class="strength">
-          <div class="top">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12l4 6-10 13L2 9z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/></svg>
-            <span class="num">03</span>
-          </div>
-          <h3>Quality Focus</h3>
-          <p>Attention to material requirements and specifications.</p>
-        </div>
-        <div class="strength">
-          <div class="top">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m11 17 2 2a1 1 0 0 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 0 0 3-3l-3.9-3.9a2 2 0 0 0-2.8 0l-1.5 1.5"/><path d="m18 15-5-5"/><path d="M2 9l4-4 5 5"/></svg>
-            <span class="num">04</span>
-          </div>
-          <h3>Relationships</h3>
-          <p>Building long-term connections with customers, suppliers and partners.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== INDUSTRIES / OPERATIONS ===================== -->
-  <section class="section bg-mineral" id="industries">
-    <div class="container">
-      <div class="sec-head reveal">
-        <span class="eyebrow">Industries We Serve</span>
-        <h2>Material for the sectors that build.</h2>
-        <p>Illustrative application sectors — editable, and not implying confirmed customers or contracts.</p>
-      </div>
-      <div class="grid cols-3" style="margin-top:56px">
-        <div class="ind reveal">
-          <img src="https://images.pexels.com/photos/29244131/pexels-photo-29244131/free-photo-of-urban-construction-site-with-road-signs.jpeg?auto=compress&dpr=1&h=900&w=720" alt="Construction" />
-          <div class="cap"><h3>Construction</h3><p>Raw materials supporting building and construction activity.</p><span class="line"></span></div>
-        </div>
-        <div class="ind reveal">
-          <img src="https://images.pexels.com/photos/2833686/pexels-photo-2833686.jpeg?auto=compress&dpr=1&h=900&w=720" alt="Infrastructure" />
-          <div class="cap"><h3>Infrastructure</h3><p>Bulk material inputs for infrastructure development.</p><span class="line"></span></div>
-        </div>
-        <div class="ind reveal">
-          <img src="https://images.pexels.com/photos/34718926/pexels-photo-34718926/free-photo-of-industrial-factory-interior-with-conveyor-belt.jpeg?auto=compress&dpr=1&h=900&w=720" alt="Industrial manufacturing" />
-          <div class="cap"><h3>Industrial Manufacturing</h3><p>Mineral feedstock for manufacturing processes.</p><span class="line"></span></div>
-        </div>
-        <div class="ind reveal">
-          <img src="https://images.unsplash.com/photo-1523848309072-c199db53f137?auto=format&fit=crop&w=720&q=85" alt="Metallurgical industry" />
-          <div class="cap"><h3>Metallurgical Industry</h3><p>Ores and fluxes for metal and alloy production.</p><span class="line"></span></div>
-        </div>
-        <div class="ind reveal">
-          <img src="https://images.pexels.com/photos/12703176/pexels-photo-12703176.jpeg?auto=compress&dpr=1&h=900&w=720" alt="Processing industry" />
-          <div class="cap"><h3>Processing Industry</h3><p>Minerals as inputs for downstream processing.</p><span class="line"></span></div>
-        </div>
-        <div class="ind reveal">
-          <img src="https://images.pexels.com/photos/33774180/pexels-photo-33774180/free-photo-of-massive-mining-truck-in-open-pit-quarry.jpeg?auto=compress&dpr=1&h=900&w=720" alt="Material supply" />
-          <div class="cap"><h3>Material Supply</h3><p>Dependable bulk supply coordination for industrial buyers.</p><span class="line"></span></div>
-        </div>
-      </div>
-      <p class="note center reveal" style="margin-top:48px">Imagery is illustrative stock photography and is not presented as photographs of SP Mines &amp; Minerals&apos; own mines, warehouses, staff or operations.</p>
-    </div>
-  </section>
-
-  <!-- ===================== SOURCING BAND ===================== -->
-  <section class="bg-charcoal" id="sourcing">
-    <div class="band">
-      <div class="bandimg">
-        <img src="https://images.pexels.com/photos/12703176/pexels-photo-12703176.jpeg?auto=compress&dpr=1&h=1000&w=1000" alt="Bulk material handling and loading" />
-      </div>
-      <div class="bandbody">
-        <div class="sec-head light reveal">
-          <span class="eyebrow">Sourcing &amp; Supply</span>
-          <h2>A dependable link between resources and requirements.</h2>
-        </div>
-        <div class="steps reveal">
-          <div class="step">
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2h8v4H8z"/><rect x="4" y="6" width="16" height="16" rx="2"/><path d="M9 12h6M9 16h4"/></svg></div>
-            <div><span class="no">01</span><h3>Requirement</h3><p>Understand buyer material requirements.</p></div>
-          </div>
-          <div class="step">
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
-            <div><span class="no">02</span><h3>Sourcing</h3><p>Identify relevant material sourcing opportunities.</p></div>
-          </div>
-          <div class="step">
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/><path d="M9 6h6a2 2 0 0 1 2 2v7"/></svg></div>
-            <div><span class="no">03</span><h3>Coordination</h3><p>Coordinate commercial and supply requirements.</p></div>
-          </div>
-          <div class="step">
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-            <div><span class="no">04</span><h3>Delivery</h3><p>Support the supply process according to agreed terms.</p></div>
-          </div>
-        </div>
-        <p class="note reveal" style="margin-top:36px;color:rgba(242,239,232,0.45)">We do not claim nationwide coverage, export capabilities or owned logistics infrastructure unless verified. Capability is confirmed per enquiry.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== GALLERY ===================== -->
-  <section class="section bg-mineral" id="gallery">
-    <div class="container">
-      <div class="sec-head center reveal">
-        <span class="eyebrow center">Earth &amp; Materials</span>
-        <h2>A closer look at the material.</h2>
-        <p>Illustrative imagery of minerals, ore textures and mining landscapes — not photographs of our own operations. Tap any image to enlarge.</p>
-      </div>
-      <div class="masonry reveal" style="margin-top:48px">
-        <button class="g"><img src="https://images.unsplash.com/photo-1680463990599-9d318aaecf71?auto=format&fit=crop&w=800&q=85" alt="Mineral ore texture" /></button>
-        <button class="g"><img src="https://images.pexels.com/photos/10834070/pexels-photo-10834070.jpeg?auto=compress&dpr=1&h=900&w=800" alt="Rocky mineral terrain" /></button>
-        <button class="g"><img src="https://images.pexels.com/photos/33774180/pexels-photo-33774180/free-photo-of-massive-mining-truck-in-open-pit-quarry.jpeg?auto=compress&dpr=1&h=700&w=800" alt="Mining truck in open-pit quarry" /></button>
-        <button class="g"><img src="https://images.pexels.com/photos/26621674/pexels-photo-26621674.jpeg?cs=srgb&fm=jpg&w=800" alt="Iron ore close-up" /></button>
-        <button class="g"><img src="https://images.pexels.com/photos/35451967/pexels-photo-35451967/free-photo-of-close-up-of-clear-quartz-crystal-on-dark-surface.jpeg?auto=compress&dpr=1&h=900&w=800" alt="Quartz crystal" /></button>
-        <button class="g"><img src="https://images.pexels.com/photos/5125104/pexels-photo-5125104.jpeg?auto=compress&dpr=1&h=700&w=800" alt="Industrial material" /></button>
-        <button class="g"><img src="https://images.pexels.com/photos/12703176/pexels-photo-12703176.jpeg?auto=compress&dpr=1&h=900&w=800" alt="Bulk material handling" /></button>
-        <button class="g"><img src="https://images.pexels.com/photos/4254898/pexels-photo-4254898.jpeg?auto=compress&dpr=1&h=700&w=800" alt="Mining landscape" /></button>
-        <button class="g"><img src="https://images.pexels.com/photos/12275700/pexels-photo-12275700.jpeg?auto=compress&dpr=1&h=900&w=800" alt="Rock formation" /></button>
-        <button class="g"><img src="https://images.pexels.com/photos/6788525/pexels-photo-6788525.jpeg?cs=srgb&fm=jpg&w=800" alt="Mineral stone" /></button>
-        <button class="g"><img src="https://images.pexels.com/photos/40537864/pexels-photo-40537864/free-photo-of-industrial-conveyor-system-at-indian-construction-site.jpeg?auto=compress&dpr=1&h=700&w=800" alt="Industrial conveyor system" /></button>
-        <button class="g"><img src="https://images.pexels.com/photos/6944924/pexels-photo-6944924.jpeg?auto=compress&dpr=1&h=900&w=800" alt="Mining operation" /></button>
-      </div>
-    </div>
-  </section>
-
-  <!-- lightbox -->
-  <div class="lightbox" aria-hidden="true">
-    <button class="lb-btn lb-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
-    <button class="lb-btn lb-prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg></button>
-    <img src="" alt="" />
-    <button class="lb-btn lb-next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></button>
+<!-- TOPBAR -->
+<div class="topbar"><div class="wrap">
+  <div class="facts">
+    <span>Mineral Resources <b>· Industrial Supply</b></span>
+    <span>Sourcing <b>· Trading · Bulk Supply</b></span>
+    <span>Based in <b>Purulia, West Bengal</b></span>
   </div>
+  <div class="tacts">
+    <a class="t-call" href="tel:+910000000000"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>Call Now</a>
+    <a class="t-wa" href="https://wa.me/910000000000" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 0 1-12.5 7.5L3 21l2-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg>WhatsApp</a>
+  </div>
+</div></div>
 
-  <!-- ===================== CTA ===================== -->
-  <section class="cta">
-    <div class="bg"><img src="https://images.pexels.com/photos/4254898/pexels-photo-4254898.jpeg?auto=compress&dpr=1&h=900&w=1600" alt="" /></div>
-    <div class="overlay"></div>
-    <div class="container inner">
-      <div>
-        <span class="eyebrow">Partner With Us</span>
-        <h2>Looking for the right<br />mineral supply partner?</h2>
-        <p>Let&apos;s discuss your material requirements and explore how we can work together.</p>
-      </div>
-      <a href="#contact" class="btn btn-primary">
-        Start a Business Enquiry
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg>
-      </a>
+<!-- HEADER -->
+<header class="hdr"><div class="wrap nav">
+  <a href="#home" class="brand">
+    <svg class="mk" viewBox="0 0 48 48" fill="none"><path d="M6 30 L24 6 L42 30" stroke="#B47745" stroke-width="3" stroke-linejoin="round"/><path d="M11 34 L24 17 L37 34" stroke="#F2EFE8" stroke-width="2.4" stroke-linejoin="round"/><path d="M16 38 L24 28 L32 38" stroke="#F2EFE8" stroke-width="2.4" stroke-linejoin="round" opacity=".7"/></svg>
+    <span><b>SP <span>Mines &amp; Minerals</span></b><small>Mineral Resources · Supply</small></span>
+  </a>
+  <ul class="menu">
+    <li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#products">Minerals</a></li>
+    <li><a href="#operations">Operations</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#faq">FAQs</a></li>
+  </ul>
+  <div class="hdr-cta">
+    <a href="#quote" class="btn btn-pri">Request a Quote</a>
+    <button class="burger" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</div></header>
+
+<nav class="mnav">
+  <button class="x" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+  <a href="#home">Home</a><a href="#about">About</a><a href="#products">Minerals</a><a href="#operations">Operations</a><a href="#gallery">Gallery</a><a href="#faq">FAQs</a><a href="#contact">Contact</a>
+  <a href="#quote" class="btn btn-pri">Request a Quote</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="bg">
+    <video autoplay muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=2000&q=80">
+      <source src="hero.mp4" type="video/mp4"/>
+    </video>
+  </div>
+  <div class="ov"></div>
+  <div class="wrap in">
+    <div class="badges">
+      <div class="badge"><small>Mineral Sourcing</small><b>Multiple Categories</b></div>
+      <div class="badge"><small>Industrial Supply</small><b>Built for Demand</b></div>
     </div>
-  </section>
+    <h1>Mineral Sourcing, Trading &amp; <span>Industrial Raw Material</span> Supply.</h1>
+    <p>SP Mines &amp; Minerals connects mineral resources with industrial demand — dependable sourcing, quality-focused supply and professional business relationships.</p>
+    <div class="acts">
+      <a href="#quote" class="btn btn-pri">Request a Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+      <a href="#products" class="btn btn-out">Explore Minerals</a>
+    </div>
+    <div class="badges" style="margin-top:22px">
+      <div class="badge"><small>Material Range</small><b>Ores · Industrial Minerals</b></div>
+      <div class="badge"><small>Serving</small><b>Construction · Industry</b></div>
+    </div>
+  </div>
+</section>
 
-  <!-- ===================== CONTACT ===================== -->
-  <section class="section bg-mineral" id="contact">
-    <div class="container contact-grid">
-      <!-- info -->
-      <div class="reveal">
-        <span class="eyebrow">Get In Touch</span>
-        <h2 style="margin-top:20px;font-size:clamp(1.8rem,4vw,2.4rem);font-weight:800">Let&apos;s discuss your mineral requirements.</h2>
-        <p class="prose" style="margin-top:16px"><span>Share your requirement and our team will get back to you.</span></p>
+<!-- INTRO -->
+<section class="sec" id="intro"><div class="wrap split">
+  <div class="reveal">
+    <span class="tag">Who We Are</span>
+    <h2 class="h2">A dependable link between resources and requirements.</h2>
+    <p class="lead">We work as a mineral sourcing and supply partner for industrial buyers — understanding requirements, identifying sourcing opportunities, and coordinating dependable supply to agreed terms.</p>
+    <div class="acts" style="display:flex;gap:14px;flex-wrap:wrap;margin-top:24px">
+      <a href="tel:+910000000000" class="btn btn-pri">Call Now</a>
+      <a href="#operations" class="btn btn-dark">View Operations</a>
+    </div>
+    <div class="chips" style="margin-top:24px">
+      <span class="chip">Sourcing Network</span><span class="chip">Quality Focus</span><span class="chip">Dispatch Coordination</span><span class="chip">Business Relationships</span>
+    </div>
+  </div>
+  <div class="reveal media r43"><img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=1200&q=80" alt="Mine terraces"/></div>
+</div></section>
 
-        <div class="info-list">
-          <a class="info-row" href="tel:+910000000000">
-            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
-            <span><small>Phone</small><p>+91 00000 00000</p></span>
-          </a>
-          <a class="info-row" href="https://wa.me/910000000000" target="_blank" rel="noopener">
-            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 0 1-12.5 7.5L3 21l2-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg></span>
-            <span><small>WhatsApp</small><p>+91 00000 00000</p></span>
-          </a>
-          <a class="info-row" href="mailto:info@spminesandminerals.com">
-            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7 10-7"/></svg></span>
-            <span><small>Email</small><p>info@spminesandminerals.com</p></span>
-          </a>
-          <div class="info-row">
-            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-            <span><small>Address</small><p>[Address line 1], [Address line 2], Purulia, West Bengal, India</p></span>
+<!-- SUPPLY SUPPORT -->
+<section class="sec" style="background:rgba(20,18,15,.74)"><div class="wrap">
+  <div class="reveal" style="text-align:center"><span class="tag" style="justify-content:center">Resource to Project</span><h2 class="h2">From resource to project site.</h2><p class="lead" style="margin:16px auto 0">A clear flow from enquiry to supported delivery, built on reliable communication.</p></div>
+  <div class="chips reveal" style="justify-content:center;margin-top:30px">
+    <span class="chip">Requirement Understood</span><span class="chip">Sourcing Identified</span><span class="chip">Specifications Confirmed</span><span class="chip">Commercial Coordination</span><span class="chip">Dispatch Support</span><span class="chip">Delivery to Terms</span>
+  </div>
+</div></section>
+
+<!-- CAPABILITY CARDS -->
+<section class="sec"><div class="wrap">
+  <div class="grid g4 reveal">
+    <div class="stat"><div class="n">Minerals</div><h4>Material Range</h4><p>A range of ores and industrial minerals, matched to requirement.</p></div>
+    <div class="stat"><div class="n">Sourcing</div><h4>Supply Network</h4><p>Relevant sourcing opportunities aligned to buyer needs.</p></div>
+    <div class="stat"><div class="n">Quality</div><h4>Spec Focus</h4><p>Attention to material requirements and specifications.</p></div>
+    <div class="stat"><div class="n">Dispatch</div><h4>Delivery Support</h4><p>Coordinated supply to agreed commercial terms.</p></div>
+  </div>
+  <p class="lead" style="margin-top:18px;font-size:.84rem">Capability descriptions are qualitative and editable — no production, capacity or fleet figures are stated unless verified.</p>
+</div></section>
+
+<!-- IMAGE STRIP -->
+<section class="sec" style="padding-top:0"><div class="wrap strip reveal">
+  <div class="s"><img src="https://images.unsplash.com/photo-1605792657660-596af9009e82?auto=format&fit=crop&w=800&q=80" alt="Ore material"/></div>
+  <div class="s"><img src="https://images.unsplash.com/photo-1519904981063-b0cf448d479e?auto=format&fit=crop&w=800&q=80" alt="Quarry operation"/></div>
+  <div class="s"><img src="https://images.unsplash.com/photo-1558478551-1a378f63328e?auto=format&fit=crop&w=800&q=80" alt="Stockyard"/></div>
+</div></section>
+
+<!-- ABOUT -->
+<section class="sec" id="about" style="background:rgba(20,18,15,.74)"><div class="wrap split">
+  <div class="reveal media r43"><img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=1200&q=80" alt="Mineral terrain"/></div>
+  <div class="reveal">
+    <span class="tag">About The Company</span>
+    <h2 class="h2">Grounded in material. Focused on business.</h2>
+    <p class="lead">SP Mines &amp; Minerals is a mineral-focused business engaged in the sourcing, trading and bulk supply of industrial raw materials. We treat every enquiry as the start of a working relationship — clear, professional and dependable.</p>
+    <div class="grid g2" style="margin-top:24px">
+      <div><h4 style="font-size:1rem;font-weight:700;color:var(--copper)">Reliability-Led</h4><p class="lead" style="margin-top:6px;font-size:.88rem">Dependable coordination and honest communication at every step.</p></div>
+      <div><h4 style="font-size:1rem;font-weight:700;color:var(--copper)">Requirement-Focused</h4><p class="lead" style="margin-top:6px;font-size:.88rem">Material matched to the requirement, not the other way around.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- PRODUCTS / MINERALS -->
+<section class="sec" id="products"><div class="wrap">
+  <div class="reveal" style="text-align:center"><span class="tag" style="justify-content:center">Our Minerals</span><h2 class="h2">Minerals that move industries.</h2><p class="lead" style="margin:16px auto 0">Sample categories, editable and illustrative until inventory is confirmed.</p></div>
+  <div class="grid g3 reveal" style="margin-top:40px">
+    <article class="pcard"><div class="th"><img src="https://images.unsplash.com/photo-1605792657660-596af9009e82?auto=format&fit=crop&w=800&q=80" alt="Iron ore"/><span class="tg">Core Product</span></div><div class="bd"><h3>Iron Ore</h3><ul><li>Feedstock for iron &amp; steel</li><li>Grades confirmed per enquiry</li><li>Bulk supply coordination</li></ul><a href="#quote" class="btn btn-dark">Request Quote</a></div></article>
+    <article class="pcard"><div class="th"><img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" alt="Manganese ore"/><span class="tg">Ferroalloys</span></div><div class="bd"><h3>Manganese Ore</h3><ul><li>Steel &amp; ferroalloy input</li><li>Alloying &amp; deoxidising</li><li>Specs discussed on enquiry</li></ul><a href="#quote" class="btn btn-dark">Request Quote</a></div></article>
+    <article class="pcard"><div class="th"><img src="https://images.unsplash.com/photo-1596996786264-4c3a6d8f1f1a?auto=format&fit=crop&w=800&q=80" alt="Quartz"/><span class="tg">Glass &amp; Ceramics</span></div><div class="bd"><h3>Quartz &amp; Silica</h3><ul><li>Glass &amp; ceramics input</li><li>Industrial processing</li><li>Matched to application</li></ul><a href="#quote" class="btn btn-dark">Request Quote</a></div></article>
+    <article class="pcard"><div class="th"><img src="https://images.unsplash.com/photo-1558478551-1a378f63328e?auto=format&fit=crop&w=800&q=80" alt="Limestone"/><span class="tg">Construction</span></div><div class="bd"><h3>Limestone &amp; Dolomite</h3><ul><li>Cement &amp; construction</li><li>Steel flux &amp; refractories</li><li>Grades to requirement</li></ul><a href="#quote" class="btn btn-dark">Request Quote</a></div></article>
+    <article class="pcard"><div class="th"><img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80" alt="Bulk materials"/><span class="tg">Heavy Supply</span></div><div class="bd"><h3>Bulk Materials</h3><ul><li>Bulk industrial minerals</li><li>Dispatch coordination</li><li>Quantity per requirement</li></ul><a href="#quote" class="btn btn-dark">Request Quote</a></div></article>
+    <article class="pcard"><div class="th"><img src="https://images.unsplash.com/photo-1623961990059-28356e226a77?auto=format&fit=crop&w=800&q=80" alt="Coal"/><span class="tg">Energy &amp; Industry</span></div><div class="bd"><h3>Coal &amp; Fuel Minerals</h3><ul><li>Industrial fuel input</li><li>Process &amp; heat supply</li><li>Specs confirmed per order</li></ul><a href="#quote" class="btn btn-dark">Request Quote</a></div></article>
+  </div>
+</div></section>
+
+<!-- OPERATIONS -->
+<section class="sec" id="operations" style="background:rgba(20,18,15,.74)"><div class="wrap">
+  <div class="reveal" style="text-align:center"><span class="tag" style="justify-content:center">Operations</span><h2 class="h2">From material to movement.</h2></div>
+  <div class="grid g4 reveal" style="margin-top:40px">
+    <div class="op"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M6 21V9l6-4 6 4v12"/></svg></div><h3>Mineral Handling</h3><p>Coordinated handling of material through the supply process.</p></div>
+    <div class="op"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><h3>Material Inspection</h3><p>Attention to specifications agreed with the buyer.</p></div>
+    <div class="op"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V10l7-5 7 5v11"/></svg></div><h3>Stockpiling</h3><p>Organised staging of bulk material for dependable supply.</p></div>
+    <div class="op"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><h3>Loading &amp; Dispatch</h3><p>Coordinated loading and dispatch to agreed terms.</p></div>
+  </div>
+  <div class="split" style="margin-top:40px">
+    <div class="reveal"><h3 style="font-size:1.3rem;font-weight:700">Supply coordination with discipline.</h3><p class="lead" style="margin-top:12px">We keep the steps between resource and requirement clear — specifications, commercials and dispatch coordinated with consistent communication.</p><a href="#quote" class="btn btn-pri" style="margin-top:20px">Discuss Supply Requirement</a></div>
+    <div class="reveal"><h3 style="font-size:1.3rem;font-weight:700">Logistics coordination.</h3><p class="lead" style="margin-top:12px">Movement of material is coordinated according to agreed terms. We do not claim owned fleet, plant or infrastructure unless verified.</p><a href="#quote" class="btn btn-dark" style="margin-top:20px">Request Dispatch Support</a></div>
+  </div>
+</div></section>
+
+<!-- WHY -->
+<section class="sec"><div class="wrap">
+  <div class="reveal" style="text-align:center"><span class="tag" style="justify-content:center">Why Choose Us</span><h2 class="h2">Built on trust. Driven by material.</h2></div>
+  <div class="grid g4 reveal" style="margin-top:40px">
+    <div class="why"><div class="n">01</div><h3>Reliability</h3><p>Dependable coordination and professional communication.</p></div>
+    <div class="why"><div class="n">02</div><h3>Integrated Approach</h3><p>Sourcing, trading and supply handled end to end.</p></div>
+    <div class="why"><div class="n">03</div><h3>Dependable Dispatch</h3><p>Supply supported to agreed commercial terms.</p></div>
+    <div class="why"><div class="n">04</div><h3>Relationships</h3><p>Long-term connections with buyers, suppliers and partners.</p></div>
+  </div>
+</div></section>
+
+<!-- INDUSTRIES -->
+<section class="sec" style="background:rgba(20,18,15,.74)"><div class="wrap">
+  <div class="reveal"><span class="tag">Industries We Serve</span><h2 class="h2">Material for the sectors that build.</h2></div>
+  <div class="reveal" style="margin-top:28px">
+    <div class="ind"><span class="no">01</span><div><h3>Construction &amp; Infrastructure</h3><p>Raw materials and bulk minerals supporting building and infrastructure activity.</p></div></div>
+    <div class="ind"><span class="no">02</span><div><h3>Industrial Manufacturing</h3><p>Mineral feedstock for manufacturing and processing operations.</p></div></div>
+    <div class="ind"><span class="no">03</span><div><h3>Metallurgical Industry</h3><p>Ores and fluxes for metal and alloy production.</p></div></div>
+    <div class="ind" style="border-bottom:none"><span class="no">04</span><div><h3>Processing &amp; Material Supply</h3><p>Dependable bulk supply coordination for industrial buyers and traders.</p></div></div>
+  </div>
+</div></section>
+
+<!-- GALLERY SNAPSHOT -->
+<section class="sec" id="gallery"><div class="wrap">
+  <div class="reveal" style="text-align:center"><span class="tag" style="justify-content:center">Operations Snapshot</span><h2 class="h2">A look at the material.</h2><p class="lead" style="margin:16px auto 0">Illustrative stock imagery — not photographs of our own operations.</p></div>
+  <div class="grid g4 reveal" style="margin-top:40px">
+    <div class="snap"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" alt="Operations"/><div class="lb">Handling &amp; Processing</div></div>
+    <div class="snap"><img src="https://images.unsplash.com/photo-1558478551-1a378f63328e?auto=format&fit=crop&w=800&q=80" alt="Stockyard"/><div class="lb">Stockyard</div></div>
+    <div class="snap"><img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80" alt="Dispatch"/><div class="lb">Loading &amp; Dispatch</div></div>
+    <div class="snap"><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80" alt="Application"/><div class="lb">Application Coverage</div></div>
+  </div>
+</div></section>
+
+<!-- HIGHLIGHTS -->
+<section class="sec" style="background:rgba(20,18,15,.74)"><div class="wrap">
+  <div class="reveal" style="text-align:center"><span class="tag" style="justify-content:center">Business Highlights</span><h2 class="h2">What sets our supply apart.</h2></div>
+  <div class="grid g4 reveal" style="margin-top:40px">
+    <div class="hl"><div class="av" style="background:#b47745"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M6 21V9l6-4 6 4v12"/></svg></div><h4>Material Range</h4><p>Multiple ore and industrial-mineral categories.</p></div>
+    <div class="hl"><div class="av" style="background:#22c55e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><h4>Dispatch Strength</h4><p>Coordinated supply to agreed terms.</p></div>
+    <div class="hl"><div class="av" style="background:#3b82f6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><h4>Quality Focus</h4><p>Attention to material specifications.</p></div>
+    <div class="hl"><div class="av" style="background:#8b5cf6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg></div><h4>Relationships</h4><p>Long-term buyer and supplier ties.</p></div>
+  </div>
+</div></section>
+
+<!-- QUOTE -->
+<section class="sec" id="quote"><div class="wrap">
+  <div class="band reveal">
+    <div class="split" style="align-items:start">
+      <div>
+        <span class="tag">Request a Quote</span>
+        <h2 class="h2">Tell us your material requirement.</h2>
+        <p class="lead">Share the mineral, quantity and location. We'll review and get back to you. Fields marked <span style="color:var(--copper)">*</span> are required.</p>
+        <div class="chips" style="margin-top:20px"><span class="chip">Mineral type</span><span class="chip">Quantity</span><span class="chip">Location</span></div>
+        <a class="btn btn-wa" style="margin-top:20px" href="https://wa.me/910000000000" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 0 1-12.5 7.5L3 21l2-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg>Enquire on WhatsApp</a>
+      </div>
+      <div>
+        <div id="ok" class="okbox hidden"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><h3>Enquiry received</h3><p id="okt">Validated — connect a backend to deliver it. Demo only.</p><button id="again" class="btn btn-dark" style="margin-top:16px">Submit another</button></div>
+        <form id="qf" novalidate>
+          <div class="fld full" style="margin-bottom:16px;border:1px solid rgba(180,119,69,.25);background:rgba(180,119,69,.06);border-radius:5px;padding:11px 14px;font-size:12px;color:var(--mut)">Demo form — validates input; does not send until a backend is connected.</div>
+          <div class="form-grid">
+            <div class="fld"><label>Full Name <span class="r">*</span></label><input name="name" placeholder="Your name"/><span class="er" data-e="name"></span></div>
+            <div class="fld"><label>Phone <span class="r">*</span></label><input name="phone" type="tel" placeholder="+91 00000 00000"/><span class="er" data-e="phone"></span></div>
+            <div class="fld"><label>Email <span class="r">*</span></label><input name="email" type="email" placeholder="you@company.com"/><span class="er" data-e="email"></span></div>
+            <div class="fld"><label>Mineral</label><select name="mineral"><option value="">Select (optional)</option><option>Iron Ore</option><option>Manganese Ore</option><option>Quartz / Silica</option><option>Limestone / Dolomite</option><option>Coal</option><option>Other</option></select></div>
+            <div class="fld"><label>Quantity</label><input name="quantity" placeholder="e.g. 500 MT / month"/></div>
+            <div class="fld"><label>Location</label><input name="location" placeholder="Delivery location"/></div>
+            <div class="fld full"><label>Message <span class="r">*</span></label><textarea name="message" rows="4" placeholder="Your requirement…"></textarea><span class="er" data-e="message"></span></div>
           </div>
-        </div>
-        <p class="note" style="margin-top:20px">Contact details are editable placeholders — replace them with verified SP Mines &amp; Minerals details in <code>index.html</code>.</p>
-      </div>
-
-      <!-- form -->
-      <div class="reveal">
-        <div class="form-wrap">
-          <h2 style="font-size:1.5rem;font-weight:700">Send an enquiry</h2>
-          <p style="margin:8px 0 0;font-size:0.9rem;color:rgba(52,56,50,0.7)">Fields marked with <span style="color:var(--copper)">*</span> are required.</p>
-
-          <div id="form-success" class="form-success hidden">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-            <h3>Enquiry ready to send</h3>
-            <p>This is a demonstration form — your details were validated but not transmitted, because no email/backend service is connected yet. Wire up the integration point in <code>main.js</code> to receive real enquiries.</p>
-            <button id="send-again" class="btn btn-ghost" style="margin-top:24px">Submit another enquiry</button>
-          </div>
-
-          <form id="enquiry-form" novalidate style="margin-top:28px">
-            <div class="form-note">Demo form — validates input but does not send until a backend / email service is connected.</div>
-            <div class="form-grid">
-              <div class="field">
-                <label>Full Name <span class="req">*</span></label>
-                <input type="text" name="name" placeholder="Your name" />
-                <span class="err" data-err="name"></span>
-              </div>
-              <div class="field">
-                <label>Company Name</label>
-                <input type="text" name="company" placeholder="Company / organisation" />
-              </div>
-              <div class="field">
-                <label>Phone Number <span class="req">*</span></label>
-                <input type="tel" name="phone" placeholder="+91 00000 00000" />
-                <span class="err" data-err="phone"></span>
-              </div>
-              <div class="field">
-                <label>Email Address <span class="req">*</span></label>
-                <input type="email" name="email" placeholder="you@company.com" />
-                <span class="err" data-err="email"></span>
-              </div>
-              <div class="field">
-                <label>Mineral Interested In</label>
-                <select name="mineral">
-                  <option value="">Select a mineral (optional)</option>
-                  <option>Iron Ore</option><option>Manganese Ore</option><option>Quartz</option>
-                  <option>Feldspar</option><option>Dolomite</option><option>Limestone</option>
-                  <option>Silica</option><option>Coal</option><option>Other</option>
-                </select>
-              </div>
-              <div class="field">
-                <label>Quantity / Requirement</label>
-                <input type="text" name="quantity" placeholder="e.g. 500 MT / month" />
-              </div>
-              <div class="field full">
-                <label>Location</label>
-                <input type="text" name="location" placeholder="Delivery / project location" />
-              </div>
-              <div class="field full">
-                <label>Message <span class="req">*</span></label>
-                <textarea name="message" rows="5" placeholder="Tell us about your material requirements…"></textarea>
-                <span class="err" data-err="message"></span>
-              </div>
-            </div>
-            <button type="submit" class="btn btn-primary" style="margin-top:20px">
-              Send Enquiry
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>
-            </button>
-          </form>
-        </div>
+          <button type="submit" class="btn btn-pri" style="margin-top:16px;width:100%">Send Enquiry <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg></button>
+        </form>
       </div>
     </div>
-  </section>
+  </div>
+</div></section>
 
-  <!-- ===================== FOOTER ===================== -->
-  <footer class="footer">
-    <div class="container top">
-      <div>
-        <a href="#home" class="brand">
-          <svg class="mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-            <path d="M6 30 L24 6 L42 30" stroke="#B47745" stroke-width="3" stroke-linejoin="round" />
-            <path d="M11 34 L24 17 L37 34" stroke="#F2EFE8" stroke-width="2.4" stroke-linejoin="round" />
-            <path d="M16 38 L24 28 L32 38" stroke="#F2EFE8" stroke-width="2.4" stroke-linejoin="round" opacity="0.7" />
-          </svg>
-          <span class="word"><b>SP<span>Mines &amp; Minerals</span></b><small>Mineral Resources · Supply</small></span>
-        </a>
-        <p class="desc">A mineral-focused business engaged in the sourcing, trading and bulk supply of industrial raw materials — connecting mineral resources with industrial demand.</p>
-      </div>
-      <div>
-        <h4>Company</h4>
-        <ul>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#minerals">Minerals</a></li>
-          <li><a href="#sourcing">Sourcing &amp; Supply</a></li>
-          <li><a href="#industries">Operations</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Minerals</h4>
-        <ul class="cols2">
-          <li><a href="#minerals">Iron Ore</a></li><li><a href="#minerals">Manganese Ore</a></li>
-          <li><a href="#minerals">Quartz</a></li><li><a href="#minerals">Feldspar</a></li>
-          <li><a href="#minerals">Dolomite</a></li><li><a href="#minerals">Limestone</a></li>
-          <li><a href="#minerals">Silica</a></li><li><a href="#minerals">Coal</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="mailto:info@spminesandminerals.com">info@spminesandminerals.com</a></li>
-          <li><a href="tel:+910000000000">+91 00000 00000</a></li>
-          <li>Purulia, West Bengal, India</li>
-        </ul>
-        <p class="note" style="margin-top:12px;color:rgba(242,239,232,0.35)">Placeholders — update before launch.</p>
-      </div>
+<!-- CONTACT -->
+<section class="sec" id="contact" style="background:rgba(20,18,15,.74)"><div class="wrap">
+  <div class="reveal"><span class="tag">Address &amp; Contact</span><h2 class="h2">Reach SP Mines &amp; Minerals.</h2></div>
+  <div class="split reveal" style="margin-top:32px;align-items:start">
+    <div class="cinfo">
+      <div class="crow"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><small>Office</small><p>[Address line], Purulia, West Bengal, India</p></div></div>
+      <div class="crow"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></div><div><small>Phone</small><p>+91 00000 00000</p></div></div>
+      <div class="crow"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7 10-7"/></svg></div><div><small>Email</small><p>info@spminesandminerals.com</p></div></div>
+      <p class="lead" style="font-size:.82rem">Contact details are placeholders — replace with verified SP Mines &amp; Minerals details.</p>
     </div>
-    <div class="container bottom">
-      <small>© <span id="year">2026</span> SP Mines &amp; Minerals. All rights reserved.</small>
-      <button class="to-top">Back to top <span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span></button>
+    <div>
+      <div class="mapph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Map embed placeholder</div>
+      <a href="#" class="btn btn-dark" style="margin-top:16px;width:100%">Get Directions</a>
     </div>
-  </footer>
+  </div>
+</div></section>
+
+<!-- FAQ -->
+<section class="sec" id="faq"><div class="wrap" style="max-width:860px">
+  <div class="reveal" style="text-align:center"><span class="tag" style="justify-content:center">FAQs</span><h2 class="h2">Common questions.</h2></div>
+  <div class="faq reveal" style="margin-top:36px">
+    <button class="q">What minerals do you supply?<span class="pm">+</span></button><div class="a"><div>We handle a range of ores and industrial minerals — iron ore, manganese, quartz/silica, limestone/dolomite, coal and others. The exact list is confirmed per enquiry.</div></div>
+    <button class="q">Do you share grades and specifications?<span class="pm">+</span></button><div class="a"><div>Grades, sizes and composition are confirmed per enquiry against your requirement. We don't publish specs we can't verify.</div></div>
+    <button class="q">Can you supply in bulk?<span class="pm">+</span></button><div class="a"><div>Yes — bulk supply is coordinated to agreed quantities and terms. Share your required quantity and timeline.</div></div>
+    <button class="q">Which industries do you serve?<span class="pm">+</span></button><div class="a"><div>Construction, infrastructure, industrial manufacturing, the metallurgical industry, and processing/material supply.</div></div>
+    <button class="q">Where are you based?<span class="pm">+</span></button><div class="a"><div>We're based in Purulia, West Bengal. Serving location and dispatch are discussed per enquiry.</div></div>
+    <button class="q">How do I request a quote?<span class="pm">+</span></button><div class="a"><div>Use the Request a Quote form above or message us on WhatsApp with the mineral, quantity and location.</div></div>
+  </div>
+</div></section>
+
+<!-- CLOSING CTA -->
+<section class="sec" style="padding-top:0"><div class="wrap"><div class="cta reveal">
+  <img src="https://images.unsplash.com/photo-1454942901704-3c44c11b2ad1?auto=format&fit=crop&w=2000&q=80" alt=""/>
+  <div class="ov"></div>
+  <div class="in"><span class="tag" style="justify-content:center">Let's Work Together</span><h2>Need reliable mineral supply for your next project?</h2><div class="acts"><a href="#quote" class="btn btn-pri">Request a Quote</a><a href="https://wa.me/910000000000" target="_blank" rel="noopener" class="btn btn-wa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 0 1-12.5 7.5L3 21l2-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg>WhatsApp</a></div></div>
+</div></div></section>
+
+<!-- FOOTER -->
+<footer class="ft"><div class="wrap">
+  <div class="top">
+    <div>
+      <a href="#home" class="brand"><svg class="mk" viewBox="0 0 48 48" fill="none"><path d="M6 30 L24 6 L42 30" stroke="#B47745" stroke-width="3" stroke-linejoin="round"/><path d="M11 34 L24 17 L37 34" stroke="#F2EFE8" stroke-width="2.4" stroke-linejoin="round"/><path d="M16 38 L24 28 L32 38" stroke="#F2EFE8" stroke-width="2.4" stroke-linejoin="round" opacity=".7"/></svg><span><b>SP <span>Mines &amp; Minerals</span></b><small>Mineral Resources · Supply</small></span></a>
+      <p class="desc">Sourcing, trading and bulk supply of industrial minerals and raw materials — connecting resources with industrial demand.</p>
+      <div class="fstats"><div><small>Focus</small><b>Minerals</b></div><div><small>Model</small><b>Sourcing · Supply</b></div><div><small>Base</small><b>Purulia</b></div></div>
+    </div>
+    <div><h5>Navigation</h5><ul><li><a href="#about">About</a></li><li><a href="#products">Minerals</a></li><li><a href="#operations">Operations</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#faq">FAQs</a></li></ul></div>
+    <div><h5>Minerals</h5><ul><li><a href="#products">Iron Ore</a></li><li><a href="#products">Manganese</a></li><li><a href="#products">Quartz / Silica</a></li><li><a href="#products">Limestone</a></li><li><a href="#products">Coal</a></li></ul></div>
+    <div><h5>Contact</h5><ul><li><a href="tel:+910000000000">+91 00000 00000</a></li><li><a href="mailto:info@spminesandminerals.com">info@spminesandminerals.com</a></li><li>Purulia, West Bengal, India</li><li><a href="#quote">Request a Quote</a></li></ul></div>
+  </div>
+  <div class="bot"><span>© <span id="yr"></span> SP Mines &amp; Minerals. All rights reserved.</span><nav><a href="#home">Home</a><a href="#about">About</a><a href="#products">Minerals</a><a href="#contact">Contact</a></nav></div>
+</div></footer>
+
+<button class="tt" aria-label="Top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 
 <script>
-/* SP Mines & Minerals — static site behaviour */
-(function () {
-  "use strict";
-
-  /* ---------- sticky header ---------- */
-  var header = document.querySelector(".header");
-  function onScroll() {
-    if (window.scrollY > 40) header.classList.add("scrolled");
-    else header.classList.remove("scrolled");
+(function(){
+  var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+  // mobile menu
+  var mnav=$(".mnav");
+  function mm(o){mnav.classList.toggle("open",o);document.body.style.overflow=o?"hidden":"";}
+  $(".burger").addEventListener("click",function(){mm(true)});
+  $(".mnav .x").addEventListener("click",function(){mm(false)});
+  $$(".mnav a").forEach(function(a){a.addEventListener("click",function(){mm(false)})});
+  // reveal
+  if("IntersectionObserver" in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("vis");io.unobserve(e.target)}})},{threshold:.1,rootMargin:"-30px"});$$(".reveal").forEach(function(e){io.observe(e)});}else{$$(".reveal").forEach(function(e){e.classList.add("vis")});}
+  // img fallback
+  $$("img").forEach(function(img){img.addEventListener("error",function(){if(img.dataset.fb)return;img.dataset.fb=1;img.removeAttribute("src");img.classList.add("fb");if(!img.style.minHeight)img.style.minHeight="160px";})});
+  // faq
+  $$(".faq .q").forEach(function(q){q.addEventListener("click",function(){var a=q.nextElementSibling,on=q.classList.contains("on");$$(".faq .q").forEach(function(x){x.classList.remove("on");x.nextElementSibling.style.maxHeight=null});if(!on){q.classList.add("on");a.style.maxHeight=a.scrollHeight+"px";}})});
+  // back to top
+  var tt=$(".tt");window.addEventListener("scroll",function(){tt.classList.toggle("on",window.scrollY>500)},{passive:true});tt.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"})});
+  // form
+  var f=$("#qf");if(f){var eRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/,pRe=/^[+\d][\d\s\-()]{6,}$/;
+   function se(n,m){var el=f.querySelector('[name="'+n+'"]'),e=f.querySelector('[data-e="'+n+'"]');if(el)el.classList.toggle("bad",!!m);if(e)e.textContent=m||""}
+   f.addEventListener("submit",function(ev){ev.preventDefault();var v=function(n){var el=f.querySelector('[name="'+n+'"]');return el?el.value.trim():""},ok=true;
+    if(!v("name")){se("name","Enter your name");ok=false}else se("name");
+    if(!v("phone")){se("phone","Enter phone");ok=false}else if(!pRe.test(v("phone"))){se("phone","Invalid phone");ok=false}else se("phone");
+    if(!v("email")){se("email","Enter email");ok=false}else if(!eRe.test(v("email"))){se("email","Invalid email");ok=false}else se("email");
+    if(!v("message")){se("message","Add a message");ok=false}else se("message");
+    if(!ok)return;var b=f.querySelector('button[type="submit"]');b.disabled=true;b.textContent="Sending…";
+    setTimeout(function(){f.classList.add("hidden");$("#ok").classList.remove("hidden")},800);
+   });
+   $("#again").addEventListener("click",function(){$("#ok").classList.add("hidden");f.classList.remove("hidden");f.reset();var b=f.querySelector('button[type="submit"]');b.disabled=false;b.innerHTML='Send Enquiry';});
   }
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
-
-  /* ---------- mobile menu ---------- */
-  var burger = document.querySelector(".burger");
-  var mobile = document.querySelector(".mobile-menu");
-  function toggleMenu(open) {
-    mobile.classList.toggle("open", open);
-    document.body.style.overflow = open ? "hidden" : "";
-  }
-  if (burger) burger.addEventListener("click", function () {
-    toggleMenu(!mobile.classList.contains("open"));
-  });
-  mobile && mobile.querySelectorAll("a").forEach(function (a) {
-    a.addEventListener("click", function () { toggleMenu(false); });
-  });
-
-  /* ---------- active nav link on scroll (anchor sections) ---------- */
-  var navLinks = Array.prototype.slice.call(document.querySelectorAll("[data-nav]"));
-  var sections = navLinks
-    .map(function (l) { return document.querySelector(l.getAttribute("href")); })
-    .filter(Boolean);
-  function setActive() {
-    var pos = window.scrollY + 120;
-    var currentId = sections.length ? sections[0].id : null;
-    sections.forEach(function (sec) { if (sec.offsetTop <= pos) currentId = sec.id; });
-    navLinks.forEach(function (l) {
-      l.classList.toggle("active", l.getAttribute("href") === "#" + currentId);
-    });
-  }
-  window.addEventListener("scroll", setActive, { passive: true });
-  setActive();
-
-  /* ---------- scroll reveal ---------- */
-  var reveals = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.12, rootMargin: "-40px" });
-    reveals.forEach(function (el) { io.observe(el); });
-  } else {
-    reveals.forEach(function (el) { el.classList.add("visible"); });
-  }
-
-  /* ---------- broken image fallback (never blank) ---------- */
-  document.querySelectorAll("img").forEach(function (img) {
-    img.addEventListener("error", function () {
-      if (img.dataset.fallbackApplied) return;
-      img.dataset.fallbackApplied = "1";
-      img.removeAttribute("src");
-      img.classList.add("img-fallback");
-      img.style.minHeight = img.style.minHeight || "200px";
-    });
-  });
-
-  /* ---------- lightbox gallery ---------- */
-  var gBtns = Array.prototype.slice.call(document.querySelectorAll(".masonry .g"));
-  var lb = document.querySelector(".lightbox");
-  var lbImg = lb ? lb.querySelector("img") : null;
-  var idx = 0;
-  function openLb(i) {
-    idx = i;
-    var src = gBtns[idx].querySelector("img").getAttribute("src");
-    lbImg.setAttribute("src", src);
-    lbImg.setAttribute("alt", gBtns[idx].querySelector("img").getAttribute("alt") || "");
-    lb.classList.add("open");
-    document.body.style.overflow = "hidden";
-  }
-  function closeLb() { lb.classList.remove("open"); document.body.style.overflow = ""; }
-  function step(d) { openLb((idx + d + gBtns.length) % gBtns.length); }
-  gBtns.forEach(function (b, i) { b.addEventListener("click", function () { openLb(i); }); });
-  if (lb) {
-    lb.addEventListener("click", function (e) { if (e.target === lb) closeLb(); });
-    lb.querySelector(".lb-close").addEventListener("click", closeLb);
-    lb.querySelector(".lb-prev").addEventListener("click", function (e) { e.stopPropagation(); step(-1); });
-    lb.querySelector(".lb-next").addEventListener("click", function (e) { e.stopPropagation(); step(1); });
-    document.addEventListener("keydown", function (e) {
-      if (!lb.classList.contains("open")) return;
-      if (e.key === "Escape") closeLb();
-      if (e.key === "ArrowRight") step(1);
-      if (e.key === "ArrowLeft") step(-1);
-    });
-  }
-
-  /* ---------- back to top ---------- */
-  var toTop = document.querySelector(".to-top");
-  if (toTop) toTop.addEventListener("click", function () {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-
-  /* ---------- contact form (DEMO — does not send) ---------- */
-  var form = document.querySelector("#enquiry-form");
-  if (form) {
-    var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    var phoneRe = /^[+\d][\d\s\-()]{6,}$/;
-
-    // prefill mineral from ?mineral= or #enquire link data
-    try {
-      var params = new URLSearchParams(window.location.search);
-      var m = params.get("mineral");
-      if (m) { var sel = form.querySelector('[name="mineral"]'); if (sel) sel.value = m; }
-    } catch (e) {}
-
-    form.addEventListener("click", function (e) {
-      var t = e.target.closest("[data-mineral]");
-      if (t) {
-        var sel = form.querySelector('[name="mineral"]');
-        if (sel) sel.value = t.getAttribute("data-mineral");
-      }
-    });
-
-    function setErr(name, msg) {
-      var f = form.querySelector('[name="' + name + '"]');
-      var e = form.querySelector('[data-err="' + name + '"]');
-      if (f) f.classList.toggle("invalid", !!msg);
-      if (e) e.textContent = msg || "";
-    }
-
-    form.addEventListener("submit", function (ev) {
-      ev.preventDefault();
-      var ok = true;
-      var v = function (n) { var el = form.querySelector('[name="' + n + '"]'); return el ? el.value.trim() : ""; };
-
-      if (!v("name")) { setErr("name", "Please enter your full name."); ok = false; } else setErr("name");
-      if (!v("phone")) { setErr("phone", "Please enter a phone number."); ok = false; }
-      else if (!phoneRe.test(v("phone"))) { setErr("phone", "Enter a valid phone number."); ok = false; } else setErr("phone");
-      if (!v("email")) { setErr("email", "Please enter an email address."); ok = false; }
-      else if (!emailRe.test(v("email"))) { setErr("email", "Enter a valid email address."); ok = false; } else setErr("email");
-      if (!v("message")) { setErr("message", "Please add a short message."); ok = false; } else setErr("message");
-
-      if (!ok) return;
-
-      var btn = form.querySelector('button[type="submit"]');
-      btn.disabled = true;
-      var label = btn.innerHTML;
-      btn.textContent = "Sending…";
-
-      // ---- INTEGRATION POINT -------------------------------------------
-      // DEMO only: no backend configured, so nothing is actually sent.
-      // To go live, POST the form data to your endpoint here, e.g. a
-      // Google Apps Script web-app URL or a form service, then show success.
-      // ------------------------------------------------------------------
-      setTimeout(function () {
-        form.classList.add("hidden");
-        document.querySelector("#form-success").classList.remove("hidden");
-        btn.disabled = false;
-        btn.innerHTML = label;
-        form.reset();
-      }, 1000);
-    });
-
-    var again = document.querySelector("#send-again");
-    if (again) again.addEventListener("click", function () {
-      document.querySelector("#form-success").classList.add("hidden");
-      form.classList.remove("hidden");
-    });
-  }
-
-  /* ---------- footer year ---------- */
-  var yr = document.querySelector("#year");
-  if (yr) yr.textContent = new Date().getFullYear();
+  $("#yr").textContent=new Date().getFullYear();
 })();
-
 </script>
 </body>
 </html>
