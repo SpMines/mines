@@ -7,13 +7,13 @@
 <meta name="description" content="SP Mines & Minerals — sourcing, trading and bulk supply of industrial minerals and raw materials. Dependable supply for construction, infrastructure and industry."/>
 <meta name="theme-color" content="#14120f"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 :root{
   --bg:#14120f; --bg2:#1c1a16; --card:#211e19; --line:rgba(255,255,255,.08);
   --ink:#f2efe8; --mut:#a79e8f; --copper:#b47745; --copper2:#cf8a4f; --stone:#75634e;
   --maxw:1240px; --ease:cubic-bezier(.22,1,.36,1);
-  --head:"Jost",system-ui,sans-serif; --body:"Inter",system-ui,sans-serif; --disp:"Space Grotesk",monospace;
+  --head:"Jost",system-ui,sans-serif; --body:"Jost",system-ui,sans-serif; --disp:"Jost",system-ui,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -29,7 +29,29 @@ h1,h2,h3,h4{font-family:var(--head);line-height:1.1;letter-spacing:-.01em}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 ::selection{background:var(--copper);color:#fff}
-.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 clamp(18px,4vw,42px)}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 clamp(22px,5vw,44px)}
+@media(max-width:600px){
+  .wrap{padding-left:22px;padding-right:22px}
+  .sec{padding:42px 0}
+  .band{padding:20px}
+  .hero .in{padding:56px 22px}
+  .hero{min-height:auto}
+  .h2{font-size:clamp(1.4rem,6.5vw,1.85rem)}
+  .hero h1{font-size:clamp(1.75rem,7.5vw,2.3rem)}
+  .lead{font-size:.95rem}
+  .stat,.op,.why,.hl,.crow{padding:16px}
+  .pcard .bd{padding:16px}
+  .op .ic,.hl .av{width:40px;height:40px;margin-bottom:12px}
+  .faq .q{padding:14px 16px;font-size:.92rem}
+  .faq .a div{padding:0 16px 14px}
+  .badge{padding:8px 11px}.badge b{font-size:.76rem}
+  .chip{padding:7px 12px;font-size:.76rem}
+  .grid{gap:14px}
+  .ind{padding:16px 0;gap:12px}.ind .no{font-size:1.3rem;min-width:38px}
+  .cta .in{padding:34px 20px}
+  .stat .n{font-size:1.25rem}
+  .btn{padding:12px 20px}
+}
 .sec{padding:clamp(56px,8vw,96px) 0}
 .tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--copper)}
 .tag::before{content:"";width:26px;height:2px;background:var(--copper)}
@@ -86,7 +108,7 @@ img.fb{background:linear-gradient(135deg,var(--bg2),var(--stone) 60%,var(--card)
 .hero .bg{position:absolute;inset:0}
 .hero .bg img,.hero .bg video{width:100%;height:100%;object-fit:cover}
 .hero .ov{position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,14,11,.95) 0%,rgba(15,14,11,.8) 45%,rgba(15,14,11,.45) 100%)}
-.hero .in{position:relative;z-index:2;padding:72px 0}
+.hero .in{position:relative;z-index:2;padding:72px clamp(22px,5vw,44px)}
 .hero .badges{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px}
 .badge{border:1px solid var(--line);border-radius:6px;padding:10px 14px;background:rgba(33,30,25,.6)}
 .badge small{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--copper);font-weight:700}
